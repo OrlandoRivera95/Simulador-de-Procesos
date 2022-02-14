@@ -49,9 +49,14 @@ public class Simulator extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C", "D", "E", "F", "G", "H" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "A", "B", "C", "D", "E", "F", "G", "H" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "1", "2", "3", "4", "5", "6", "7", "8" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(153, 153, 255));
         jButton1.setText("Iniciar");
@@ -179,20 +184,17 @@ public class Simulator extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-       /*this.jCheckBox1.setSelected(false); 
-       this.jComboBox1.setSelectedItem("A");
-       this.jComboBox2.setSelectedItem("1");*/
-        
+       
         SimuladorProceso emp=new SimuladorProceso();
         emp.proceso=this.jComboBox1.getSelectedItem().toString();
         emp.tamaño=Integer.valueOf(this.jComboBox2.getSelectedItem().toString());
-        emp.activo=this.jCheckBox1.isSelected(); 
+        //emp.activo=this.jCheckBox1.isSelected(); 
         
         arreglo.add(emp);
     
         pos=arreglo.size()-1;
         presentar_table(); 
+      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -201,8 +203,8 @@ public class Simulator extends javax.swing.JFrame {
        this.arreglo.remove(x); 
        this.model.removeRow(x); 
        this.jCheckBox1.setSelected(false); 
-       this.jComboBox1.setSelectedItem("A");
-       this.jComboBox2.setSelectedItem("1");
+       this.jComboBox1.setSelectedItem("Seleccionar");
+       this.jComboBox2.setSelectedItem("Seleccionar");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -222,6 +224,10 @@ public class Simulator extends javax.swing.JFrame {
         // TODO add your handling code here:
        
     }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 void presentar(int i){
     
     if(i>=0 && i<arreglo.size()){
